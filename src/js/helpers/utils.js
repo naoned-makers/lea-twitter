@@ -88,51 +88,5 @@ export const isAdmin = (name) => Configuration
   .ADMINS
   .indexOf(name.toLowerCase()) != -1;
 
-export const isDemoOff = (tweet) => tweet
-  .text
-  .toLowerCase()
-  .indexOf(Configuration.TEXT_LEA_DEMO_OFF.toString().toLowerCase()) != -1;
-
-export const isDemoOn = (tweet) => tweet
-  .text
-  .toLowerCase()
-  .indexOf(Configuration.TEXT_LEA_DEMO_ON.toString().toLowerCase()) != -1;
 
 
-/**
- * Génère et renvoie un squelette de tweet
- * @returns {Tweet}
- */
-export const generateTweet = (text) => {
-  let tweet = new Tweet("", "", text);
-  tweet.isSpecial = true;
-  tweet.motion = "NO_MOTION";
-  return tweet;
-};
-
-/**
- * Génère et renvoie un tweet indiquant que Léa fait une pause
- * @returns {Tweet}
- */
-export const generatePauseTweet = () => {
-  logger.log('debug', 'Je génére un tweet de pause');
-  return generateTweet(Configuration.TEXT_LEA_PAUSE);
-};
-
-/**
- * Génère et renvoie un tweet indiquant que Léa est prête à jouer
- * @returns {Tweet}
- */
-export const generateStartUpTweet = () => {
-  logger.log('debug', 'Je génére un tweet d\'initialisation');
-  return generateTweet(Configuration.TEXT_LEA_START_UP);
-};
-
-/**
- * Génère et renvoie un tweet indiquant que Léa est prête à jouer
- * @returns {Tweet}
- */
-export const generateStartTweet = () => {
-  logger.log('debug', 'Je génére un tweet de démarrage');
-  return generateTweet(Configuration.TEXT_LEA_START);
-};

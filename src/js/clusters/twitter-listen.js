@@ -52,7 +52,7 @@ TwitterListen.streamTwitter = function() {
       logger.log('debug', "envoie du tweet sur l'arduino");
       logger.log('debug', tweet);
       
-      clientMqtt.publish('lea/message/arduino', JSON.stringify(tweet));
+      clientMqtt.publish('lea/twitter/brain', JSON.stringify(tweet));
 
     }
   });

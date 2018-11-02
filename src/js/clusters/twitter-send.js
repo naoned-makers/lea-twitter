@@ -38,7 +38,7 @@ TwitterSend.listenMessage = function() {
   
   clientMqtt.on('connect', function () {
     logger.log('debug', "client connecté pour envoyer des messages twitter");
-    clientMqtt.subscribe('lea/message/tweet');
+    clientMqtt.subscribe('lea/ui/tweet');
   });
   
   
