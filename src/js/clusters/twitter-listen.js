@@ -39,7 +39,7 @@ TwitterListen.streamTwitter = function() {
     "access_token_key": process.env.TWITTER_ACCESS_TOKEN_KEY,
     "access_token_secret": process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
-  logger.log('debug', "Création du client Twitter...");
+  logger.log('debug', "Création du client Twitter Listen...");
   let stream = client.stream('statuses/filter', {track: 'lea_nmakers'});
 
   stream.on('data', function(tweetReceived) {
@@ -68,7 +68,6 @@ TwitterListen.streamTwitter = function() {
  * @param msg message contenant le type d'action à effectuer
  */
 TwitterListen.messageHandler = function(msg) {
-  logger.log('info', 'AAAAAAAAAAAA');
   TwitterListen.streamTwitter();
 };
 

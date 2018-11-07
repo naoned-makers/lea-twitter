@@ -37,13 +37,11 @@ Configuration.RANK_FILE = 'rank.txt';
  */
 Configuration.TWEETS_DB = 'tweets.json';
 
-Configuration.WELCOME_MESSAGE = 'welcomeMessage.txt';
-
 /*
  * Constante représentant les textes des tweets pour arrêter ou démarrer léa
  * Cela représente aussi le texte qu'affiche Léa quand elle est en pause.
  */
-Configuration.USER_TWITTER = '@lea_nmakers';
+Configuration.USER_TWITTER = 'lea_nmakers';
 
 
 

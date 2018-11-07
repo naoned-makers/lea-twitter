@@ -22,7 +22,7 @@ function TwitterSend() {}
  * Les credentials sont fixés par des variables d'environnement
  */
 TwitterSend.listenMessage = function() {
-  logger.log('debug', "Création du client Twitter...");
+  logger.log('debug', "Création du client Twitter Send...");
   client = new TwitterAPI({
     "consumer_key": process.env.TWITTER_CONSUMER_KEY,
     "consumer_secret": process.env.TWITTER_CONSUMER_SECRET,
@@ -76,7 +76,6 @@ TwitterSend.listenMessage = function() {
  * @param msg message contenant le type d'action à effectuer
  */
 TwitterSend.messageHandler = function(msg) {
-  logger.log('info', 'BBBBBBBBBBB');
   TwitterSend.listenMessage();
 };
 
