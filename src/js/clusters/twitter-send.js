@@ -10,6 +10,9 @@ import os from "os";
 
 let client;
 let clientMqtt;
+let optionsMqtt = {QoS: 2, retain: true};
+
+const UI_TO_TWITTER_CHANNEL = 'lea/ui/tweet';
 
 /**
  * Constructeur.
@@ -22,7 +25,7 @@ function TwitterSend() {}
  * Les credentials sont fixés par des variables d'environnement
  */
 TwitterSend.listenMessage = function() {
-  logger.log('debug', "Création du client Twitter Send...");
+  logger.log('debug', "TWS Création du client Twitter Send...");
   client = new TwitterAPI({
     "consumer_key": process.env.TWITTER_CONSUMER_KEY,
     "consumer_secret": process.env.TWITTER_CONSUMER_SECRET,
@@ -37,34 +40,20 @@ TwitterSend.listenMessage = function() {
   });
   
   clientMqtt.on('connect', function () {
-    logger.log('debug', "client connecté pour envoyer des messages twitter");
-    clientMqtt.subscribe('lea/ui/tweet');
+    logger.log('debug', "TWS client connecté");
+    clientMqtt.subscribe(UI_TO_TWITTER_CHANNEL, optionsMqtt);
   });
   
   
   //A new command as arrived
   clientMqtt.on('message', function (topic, strPayload) {
-    logger.log('debug', "MESSAGE TWITTER");
-    logger.log('info', "MESSAGE TWITTER INFO");
-    logger.log('debug', topic);
     let payload = strPayload.toString();
-    logger.log('debug', payload);
+    logger.log('debug', "TWS Réception message " + payload);
 
     client.post('statuses/update', {status: '@lea_nmakers ' + payload},  function(error, tweet, response) {
       if(error) throw error;
-      console.log(tweet);  // Tweet body.
-      console.log(response);  // Raw response object.
+      logger.log('debug', "TWS envoie tweet " + payload);
     });
-
-
- /*   try {
-      logger.log('debug', "AVANT SEND TWEET");
-      client.post('statuses/update', {track: '@lea_nmakers ' + payload});
-    } catch (error) {
-      logger.log('debug', "ERREUR GRAVE");
-      logger.log('debug', error);
-    }*/
-    logger.log('debug', "APRES SEND TWEET");
   });
 }
 
