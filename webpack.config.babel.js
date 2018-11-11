@@ -12,6 +12,7 @@ fs
   .forEach((mod) => nodeModules[mod] = 'commonjs ' + mod);
 
 export default {
+  mode: 'development',
   entry: {
     app: [PATHS.listen, PATHS.send]
   },

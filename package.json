@@ -24,7 +24,7 @@
   "scripts": {
     "test": "webpack --display-error-details && babel-node spec/jasmine-runner",
     "prod": "webpack --mode=production && node ./dist/app.js",
-    "dev": "webpack --mode=development && node ./dist/app.js",
+    "dev": "webpack && node ./dist/app.js",
     "build": "webpack --display-error-details",
     "stats": "webpack --env production --profile --json > stats.json"
   }
