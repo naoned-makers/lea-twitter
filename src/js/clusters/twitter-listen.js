@@ -2,6 +2,7 @@ import TwitterAPI from "twitter";
 
 import Tweet from "../models/tweet";
 import logger from "../helpers/log";
+import { chooseSound } from "../helpers/sound";
 import mqtt from "mqtt";
 import os from "os";
 
@@ -43,6 +44,8 @@ function streamTwitter() {
     if (!tweetReceived.retweeted_status) {
 
       let tweet = new Tweet(tweetReceived.user.name, tweetReceived.user.screen_name, tweetReceived.text);
+      // Il faut choisir le son associé au tweet
+      tweet.sound = chooseSound(tweet);
       logger.log('debug', "TWL envoie du tweet sur l'arduino");
       clientMqtt.publish(TWITTER_TO_BRAIN_CHANNEL, JSON.stringify(tweet), optionsMqtt);
     }
