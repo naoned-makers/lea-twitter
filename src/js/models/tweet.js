@@ -8,11 +8,8 @@ export default class Tweet {
         this.text  = text;
         this.LCDText = this.getTweet();
         this.fresh = true;
-        this.rank = 1;
         this.motion = "KUNG_FU_PANDA";
         this.timestamp = Date.now();
-		this.winner = false;
-		this.isSpecial = false;
 		this.sound = "foo";
   	}
 

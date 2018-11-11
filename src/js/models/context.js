@@ -29,14 +29,6 @@ export default class Context {
         this.isTweetDisplayed = false;
         this.tweetDisplayed = false;
 
-
-        /*
-         * Indique le numéro d'arrivée du tweet.
-         * Il faut prévoir la sauvegarde pour chaque twet reçu
-         */
-        this._rank;
-
-
         this.isDemoMode = true;
    }
 }

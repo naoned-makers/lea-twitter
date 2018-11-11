@@ -1,9 +1,6 @@
 import TwitterAPI from "twitter";
 
 import Tweet from "../models/tweet";
-import Configuration from "../config/configuration";
-import Context from "../models/context";
-import {isAdmin, isDemoOn, isDemoOff} from "../helpers/utils";
 import logger from "../helpers/log";
 import mqtt from "mqtt";
 import os from "os";
@@ -16,16 +13,10 @@ let optionsMqtt = {QoS: 2, retain: true};
 const TWITTER_TO_BRAIN_CHANNEL = 'lea/twitter/brain';
 
 /**
- * Constructeur.
- * @constructor
- */
-function TwitterListen() {}
-
-/**
  * Ecoute des tweets grâce à l'API streaming de twitter.
  * Les credentials sont fixés par des variables d'environnement
  */
-TwitterListen.streamTwitter = function() {
+function streamTwitter() {
   
   logger.log('debug', "TWL Création du client Twitter Listen...");
   client = new TwitterAPI({
@@ -61,14 +52,4 @@ TwitterListen.streamTwitter = function() {
     throw error;
   });
 }
-
-/**
- * Message handler pour la partie twitter
- * Il permet l'aiguillage au sein du code pour la partie twitter à effectuer
- * @param msg message contenant le type d'action à effectuer
- */
-TwitterListen.messageHandler = function(msg) {
-  TwitterListen.streamTwitter();
-};
-
-module.exports = TwitterListen;
+streamTwitter();

@@ -15,16 +15,10 @@ let optionsMqtt = {QoS: 2, retain: true};
 const UI_TO_TWITTER_CHANNEL = 'lea/ui/tweet';
 
 /**
- * Constructeur.
- * @constructor
- */
-function TwitterSend() {}
-
-/**
  * Ecoute des tweets grâce à l'API streaming de twitter.
  * Les credentials sont fixés par des variables d'environnement
  */
-TwitterSend.listenMessage = function() {
+function listenMessage() {
   logger.log('debug', "TWS Création du client Twitter Send...");
   client = new TwitterAPI({
     "consumer_key": process.env.TWITTER_CONSUMER_KEY,
@@ -56,16 +50,4 @@ TwitterSend.listenMessage = function() {
     });
   });
 }
-
-
-
-/**
- * Message handler pour la partie twitter
- * Il permet l'aiguillage au sein du code pour la partie twitter à effectuer
- * @param msg message contenant le type d'action à effectuer
- */
-TwitterSend.messageHandler = function(msg) {
-  TwitterSend.listenMessage();
-};
-
-module.exports = TwitterSend;
+listenMessage();

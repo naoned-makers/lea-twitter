@@ -10,27 +10,9 @@ import fs from 'fs';
 export default class Configuration {}
 
 /*
- * Compte twitter des admin de Léa
- */
-Configuration.ADMINS = [
-  "scxpro",
-  "thedireizh",
-  "lynchmaniacpl",
-  "fwlodarezack",
-  "batiot",
-  "rguillome",
-  "lea_nmakers"
-];
-
-/*
  * Listes des commandes d'action pour Léa
  */
 Configuration.CLASSIC_MOTIONS = ["KUNG_FU_PANDA", "SHAOLIN_SOCCER"];
-
-/*
- * Fichier contenant le nombre de tweets reçu
- */
-Configuration.RANK_FILE = 'rank.txt';
 
 /*
  * Contenus de l'ensemble des tweets reçu

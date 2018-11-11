@@ -13,7 +13,7 @@ fs
 
 export default {
   entry: {
-    app: [PATHS.app]
+    app: [PATHS.listen, PATHS.send]
   },
   target: 'node',
   output: {
