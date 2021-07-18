@@ -29,7 +29,7 @@ function listenMessage() {
   
   
   //on se connecte au broker (localhost) et on suscribe aux command message
-  clientMqtt = mqtt.connect('ws://localhost:3001', {
+  clientMqtt = mqtt.connect('ws://lea.local:3001', {
       clientId: 'lea_twitter_send_' + os.hostname()
   });
   
